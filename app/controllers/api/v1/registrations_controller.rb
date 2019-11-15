@@ -19,4 +19,10 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
     return if params[:user].present?
     json_response "Missing Params", false, {}, :bad_request
   end
+
+  def ensure_password
+    return if params[:user].present?
+    json_response "Password Do not match", false, {}, :bad_request
+  end
+
 end
